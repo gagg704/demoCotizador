@@ -1,0 +1,112 @@
+
+@use '@angular/material' as mat;
+
+@use "../src/styles/themes/sedarpa" as mycolors;
+
+@import '../node_modules/angular-calendar/css/angular-calendar.css';  
+//@include mat.elevation-classes();
+//@include mat.app-background();
+
+@include mat.all-component-themes(mycolors.$staffize-theme);
+@include mat.strong-focus-indicators-theme(mycolors.$staffize-theme);
+
+$primary900: mat.m2-get-color-from-palette(mycolors.$primary-palette, 900);
+$primary800: mat.m2-get-color-from-palette(mycolors.$primary-palette, 800);
+$primary700: mat.m2-get-color-from-palette(mycolors.$primary-palette, 700);
+$primary600: mat.m2-get-color-from-palette(mycolors.$primary-palette, 600);
+$primary500: mat.m2-get-color-from-palette(mycolors.$primary-palette, 500);
+$primary400: mat.m2-get-color-from-palette(mycolors.$primary-palette, 400);
+$primary50: mat.m2-get-color-from-palette(mycolors.$primary-palette, 50);
+
+$accent900: mat.m2-get-color-from-palette(mycolors.$accent-palette, 900);
+$accent300: mat.m2-get-color-from-palette(mycolors.$accent-palette, 300);
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  src: url('../public/fonts/NunitoSans-Normal-Variable.ttf'), url('../public/fonts/NunitoSans-Italic-Variable.ttf') format('truetype');
+}
+
+html * {  
+  font-family: 'Nunito Sans';
+  font-size: 14px;
+}
+
+html,body {
+  height: 100%;
+  margin:0;
+  padding: 0;
+}
+
+body { 
+  margin: 0; 
+  height: 95%;
+}
+
+.waves{
+  z-index: -1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.line1{
+  stop-color: ($primary900);
+}
+
+.line2{
+  stop-color: ($primary400);
+}
+
+.line3{
+  fill: $primary900;
+  opacity: 0.2;
+}
+
+.report-card{
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+mat-divider{
+  border-top-color: $accent300 !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+mat-card-footer{
+  margin: 1rem !important;
+}
+
+.mat-mdc-card-title{
+  color: $primary900 !important;
+}
+
+.mat-mdc-card-subtitle{
+  color: $accent900 !important;
+}
+
+.mat-drawer-container {
+  background-color: transparent !important;
+}
+
+.mat-mdc-header-row{
+  background-color: $accent300 !important; 
+  color: white !important;   
+}
+
+// .mat-mdc-footer-row{
+//   background-color: lightsteelblue !important; 
+//   color: white !important;   
+// }
+
+tr:hover {
+  background: whitesmoke;
+}
+
+//Snackbar
+
+.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+  background-color: $accent900 !important;
+}

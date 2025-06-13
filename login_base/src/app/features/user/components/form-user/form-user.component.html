@@ -1,0 +1,144 @@
+<div style="margin:1rem" fxFlex="100" fxLayoutAlign="center center">
+  <mat-card fxFlex="90">
+    <mat-card-header>
+      <mat-card-title>{{ !userId ? 'Registro' : 'Actualización' }} de Usuario</mat-card-title>
+      <mat-card-subtitle>
+        Datos usuario de sistema
+        @if(userId){
+        <mat-slide-toggle [(ngModel)]="changePassword" (click)="updateChangePassword()">Actualizar contraseña? {{changePassword ? 'Si': 'No'}}</mat-slide-toggle>
+        }  
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider/>
+    <mat-card-content>  
+      <form [formGroup]="userForm">      
+        <div fxLayout="row wrap" fxLayoutGap="10">
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>ID de usuario</mat-label>
+            <input matInput formControlName="id" placeholder="ID de registro de usuario" type="text" name="userId">
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Usuario (Mínimo 6 caracteres)</mat-label>
+            <input matInput appUppercase formControlName="username" placeholder="Usuario para inicio de sesión" type="text" (change)="checkUsername()">
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>contraseña</mat-label>
+            <input matInput formControlName="password" placeholder="Contraseña para inicio de sesión" type="text">
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24 ">
+            <mat-label>Rol de Usuario</mat-label>
+            <mat-select formControlName="roleId">
+              @for (rol of roles; track rol.id) {
+              <mat-option [value]="rol.id">{{rol.role}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <div fxLayout="column" fxFlex="24"></div>
+        </div>
+        <h4>Datos personales</h4>
+    
+        <div fxLayout="row wrap" fxLayoutGap="10">
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Nombre</mat-label>
+            <input matInput appUppercase formControlName="name" placeholder="Nombre" type="text">
+          </mat-form-field>
+    
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Apellidos</mat-label>
+            <input matInput appUppercase formControlName="lastname" placeholder="Apellidos" type="text">
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="phone_house" placeholder="Teléfono" type="phone">
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="phone_cel" placeholder="Celular" type="phone">
+          </mat-form-field>
+    
+    
+        </div>
+    
+        <div fxLayout="row wrap" fxLayoutGap="10">
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput appUppercase formControlName="email" placeholder="micorreo@example.com" type="email" (change)="checkEmail()">
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Código Postal</mat-label>
+            <input 
+            matInput 
+            placeholder="Código Postal" 
+            type="text" 
+            (input)="getPostalCodeByFilter( $event )"
+            [matAutocomplete]="autoPostalCode" 
+            #postalCodeFilter 
+            autocomplete="bloquearautocomplete" 
+            required />        
+            <mat-autocomplete 
+            requireSelection 
+            #autoPostalCode="matAutocomplete">
+              @for (postalCode of postalCodes; track postalCode.id) {
+              <mat-option value="{{postalCode.id}}"
+              (click)="onPostalCodeSelect(postalCode.id, postalCode.d_codigo, postalCode.d_estado, postalCode.D_mnpio, postalCode.d_ciudad)">
+                {{postalCode.d_codigo}}
+              </mat-option>
+              }
+              </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Estado</mat-label>
+            <input type="text" placeholder="Estado" matInput [disabled]="true" #state />        
+          </mat-form-field>
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Municipio</mat-label>
+            <input type="text" placeholder="Municipio" matInput [disabled]="true" #municipality />
+          </mat-form-field>
+        </div>
+    
+        <div fxLayout="row wrap" fxLayoutGap="10">
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Ciudad</mat-label>
+            <input type="text" placeholder="Ciudad" matInput [disabled]="true" #city>
+          </mat-form-field>
+    
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>Calle</mat-label>
+            <input matInput appUppercase placeholder="Calle" type="text" formControlName="street" >
+          </mat-form-field>
+    
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>No. Exterior</mat-label>
+            <input matInput appUppercase formControlName="external_number" placeholder="Número Exterior" type="text">
+          </mat-form-field>
+    
+          <mat-form-field fxFlex="24" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="24" fxFlex.lg="24">
+            <mat-label>No. Interior</mat-label>
+            <input matInput appUppercase formControlName="internal_number" placeholder="Número Interior" type="text">
+          </mat-form-field>
+        </div>
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-footer fxLayout="row" fxLayoutGap="10" fxLayoutAlign="end center">
+
+        @if(!userId){
+        <div fxFlex="10" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="10" fxFlex.lg="10">
+          <a mat-raised-button class="full-width-button" color="primary" (click)="cleanForm()"><mat-icon>autorenew</mat-icon>Limpiar</a>
+        </div>
+        }
+        <div fxFlex="10" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="10" fxFlex.lg="10">
+          <button 
+          mat-raised-button 
+          color="primary" 
+          [disabled]="!userForm.valid"
+          (click)="sendForm()">
+            <mat-icon>save</mat-icon>
+            {{ !userId ? 'Registrar': 'Actualizar' }}
+          </button>
+        </div>
+    </mat-card-footer>
+
+  </mat-card>
+</div>

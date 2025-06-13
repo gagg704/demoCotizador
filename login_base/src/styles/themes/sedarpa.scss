@@ -1,0 +1,115 @@
+// src/styles/themes/demo.scss
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$primary-palette: (
+    50 : #f0e1e7,
+    100 : #dab3c3,
+    200 : #c2819b,
+    300 : #aa4f73,
+    400 : #972955,
+    500 : #850337,
+    600 : #7d0331,
+    700 : #72022a,
+    800 : #680223,
+    900 : #550116,
+    A100 : #ff879a,
+    A200 : #ff546f,
+    A400 : #ff2145,
+    A700 : #ff082f,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$accent-palette: (
+    50 : #f6f1ea,
+    100 : #e8dbcc,
+    200 : #d9c4aa,
+    300 : #c9ac87,
+    400 : #be9a6e,
+    500 : #b28854,
+    600 : #ab804d,
+    700 : #a27543,
+    800 : #996b3a,
+    900 : #8a5829,
+    A100 : #ffe4cd,
+    A200 : #ffc99a,
+    A400 : #ffad67,
+    A700 : #ffa04d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$warn-palette: (
+    50 : #f9e0e0,
+    100 : #f0b3b3,
+    200 : #e68080,
+    300 : #db4d4d,
+    400 : #d42626,
+    500 : #cc0000,
+    600 : #c70000,
+    700 : #c00000,
+    800 : #b90000,
+    900 : #ad0000,
+    A100 : #ffd7d7,
+    A200 : #ffa4a4,
+    A400 : #ff7171,
+    A700 : #ff5858,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$staffize-primary: mat.m2-define-palette($primary-palette, 900, 300, 900);
+$staffize-accent: mat.m2-define-palette($accent-palette, 300, 100, 500);
+$staffize-warn: mat.m2-define-palette($warn-palette, 700);
+
+$staffize-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $staffize-primary,
+    accent: $staffize-accent,
+    warn: $staffize-warn
+  ),
+  density: -4,
+));

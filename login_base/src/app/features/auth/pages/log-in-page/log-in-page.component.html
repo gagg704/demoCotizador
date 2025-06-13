@@ -1,0 +1,37 @@
+@if(!isLoggedIn){
+    <div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
+      <div fxLayout="column" fxFlex="50" fxLayoutAlign="center center">
+        <img fxFlex="70" src="images/logo_cotizador.png" alt="WP - Equipo Médico Especializado">
+        <h3>Versión {{ version }}</h3>
+      </div>
+      
+      <form [formGroup]="logInForm" fxLayoutAlign="center center">
+        <div fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-form-field fxFlex="100" color="primary">
+          <mat-label>Usuario</mat-label>
+          <input 
+          matInput
+          formControlName="username"
+          lowercase
+          trim
+          type="username">
+          <mat-icon color="primary" matSuffix>badge</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field fxFlex="100" color="primary">
+          <mat-label for="floatingPassword">Contraseña</mat-label>
+          <input         
+          matInput
+          (keyup.enter)="onSubmit(); $event.preventDefault()"
+          formControlName="password"
+          minlength="8"
+          type="password">
+          <mat-icon color="primary" matSuffix>password</mat-icon>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(); $event.preventDefault() "><mat-icon matSuffix>check</mat-icon>Iniciar Sesión</button>
+      </div>
+      </form>
+    </div>
+    
+  }

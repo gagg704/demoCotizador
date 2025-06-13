@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <input 
+    matInput
+    appUppercase 
+    (keyup)="search($event)" 
+    placeholder="Ingrese texto para busqueda"  
+    type="search" 
+    #searchInput />
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>

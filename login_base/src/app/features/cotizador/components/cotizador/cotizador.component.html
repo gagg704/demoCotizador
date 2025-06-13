@@ -1,0 +1,154 @@
+<mat-card class="report-card" fxFlex="100">
+    <mat-card-header fxLayout="row" fxLayoutGap="20" fxFlex="100" fxLayoutAlign="space-between start">
+        <div fxFlex fxLayout="row" fxLayout fxLayoutGap="10" #titleHeight>
+            <div fxFlex="50" fxLayout="row" fxLayoutGap="10">
+                <div fxLayout="column">
+                    <button mat-mini-fab color="primary" style="margin-right: 5px;"><mat-icon>description</mat-icon></button>
+                </div>
+                <div fxLayout="column">
+                    <mat-card-title>Cotización</mat-card-title>
+                    <!-- <mat-card-subtitle>Solicitudes</mat-card-subtitle> -->
+                </div>        
+            </div>
+        </div>
+        <div fxFlex="100" fxLayout="row" fxLayoutGap="10" fxLayoutAlign="end">
+            <div class="mat-elevation-z8">
+                <mat-card fxFlex="100">
+                    <mat-card-header fxLayoutGap="10">
+                        <div fxLayout="column">
+                            <mat-card-subtitle>IVONNE CAPITAINE ABELLA</mat-card-subtitle>
+                            <mat-label><strong>RFC:</strong> CAAI660114HCO</mat-label>
+                            <mat-label><strong>TELEFONOS:</strong> 2292139413 - 2288606099 - 2299806481</mat-label>
+                            <mat-label><strong>EMAIL:</strong>{{' ventaswp@westpointmexico.com - mgarciasalazar612@gmail.com'}}</mat-label>
+                        </div>
+                        <div fxLayout="column">
+                            <mat-icon style="font-size: 4em ; height: 100%; width: 100%;" color="accent">account_box</mat-icon>
+                        </div>
+                    </mat-card-header>  
+                </mat-card>
+             </div>
+        </div>
+    </mat-card-header>
+    <br>
+    <br>
+    <mat-card-content>
+        <div style="width: 100%; height: 60vh !important; overflow: auto;">
+             <form [formGroup]="cotizacionForm">
+            <mat-card-title style="text-align: center;">Datos del cliente</mat-card-title>
+            <br>
+            <div fxLayout="row wrap" fxLayoutGap="10">
+                <mat-form-field fxFlex="50" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50">
+                    <mat-label>Cliente:</mat-label>
+                    <input matInput formControlName="namecliente" placeholder="Cliente" type="text" name="namecliente">
+                </mat-form-field>
+                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Folio cotización:</mat-label>
+                    <input matInput formControlName="foliocotizacion" placeholder="Folio cotización" type="text" name="foliocliente">
+                </mat-form-field>
+                 <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Fecha:</mat-label>
+                    <input matInput [matDatepicker]="datecotizacion" formControlName="datecotizacion">
+                    <mat-datepicker-toggle matIconSuffix [for]="datecotizacion"></mat-datepicker-toggle>
+                    <mat-datepicker #datecotizacion></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <mat-card-title style="text-align: center;">Datos de cirugia</mat-card-title>
+            <br>
+            <div fxLayout="row wrap" fxLayoutGap="10">
+                <mat-form-field fxFlex="62" fxFlex.xs="100" fxFlex.sm="62" fxFlex.md="30" fxFlex.lg="62">
+                    <mat-label>Paciente:</mat-label>
+                    <input matInput formControlName="namepaciente" placeholder="Paciente" type="text" name="namepaciente">
+                </mat-form-field>
+                <mat-label fxFlex="31" fxFlex.xs="100" fxFlex.sm="31" fxFlex.md="31" fxFlex.lg="31" style="text-align: center;"><strong>Folio Subrogado</strong> </mat-label> 
+            </div>
+            <div fxLayout="row wrap" fxLayoutGap="10">
+                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Activo:</mat-label>
+                    <input matInput formControlName="activo" placeholder="Activo" type="text" name="activo">
+                </mat-form-field>
+                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Derechohabiente:</mat-label>
+                        <input matInput formControlName="derechohabiente" placeholder="Derechohabiente" type="text" name="derechohabiente">
+                </mat-form-field>
+                <mat-form-field fxFlex="10" fxFlex.xs="100" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10">
+                    <mat-label>GN:</mat-label>
+                        <input matInput formControlName="gn" placeholder="GN" type="text" name="gn">
+                </mat-form-field>
+                <mat-form-field fxFlex="10" fxFlex.xs="100" fxFlex.sm="10" fxFlex.md="10" fxFlex.lg="10">
+                    <mat-label>GHGN:</mat-label>
+                        <input matInput formControlName="ghgn" placeholder="GHGN" type="text" name="ghgn">
+                </mat-form-field>
+                <mat-form-field fxFlex="31" fxFlex.xs="100" fxFlex.sm="31" fxFlex.md="31" fxFlex.lg="31">
+                    <mat-label>Folio Subrogado:</mat-label>
+                        <input matInput formControlName="foliosubrogado" placeholder="Folio Subrogado" type="text" name="foliosubrogado">
+                </mat-form-field>
+            </div>
+            <div fxLayout="row wrap" fxLayoutGap="10">
+                <mat-form-field fxFlex="31" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="30" fxFlex.lg="30">
+                    <mat-label>Fecha cirugia</mat-label>
+                        <input matInput [matDatepicker]="datecirugia" formControlName="datecirugia">
+                        <mat-datepicker-toggle matIconSuffix [for]="datecirugia"></mat-datepicker-toggle>
+                        <mat-datepicker #datecirugia></mat-datepicker>
+                </mat-form-field>
+                <mat-radio-group formControlName="tipoatencion">
+                    <mat-radio-button [value]='1'>Urgencia</mat-radio-button>
+                    &nbsp;
+                    <mat-radio-button [value]='2'>Ordinario</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div fxLayout="row wrap" fxLayoutGap="10">
+                <mat-form-field fxFlex="47" fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="40" fxFlex.lg="40">
+                    <mat-label>Medico</mat-label>
+                    <input matInput formControlName="medico" placeholder="Medico" type="text" name="medico">
+                </mat-form-field>
+                <mat-form-field fxFlex="47" fxFlex.xs="100" fxFlex.sm="40" fxFlex.md="40" fxFlex.lg="40">
+                    <mat-label>Hospital</mat-label>
+                    <input matInput formControlName="hospital" placeholder="Hospital" type="text" name="hospital">
+                </mat-form-field>
+            </div>
+            <mat-card-title style="text-align: center;">Se cotiza el siguiente material de insumos:</mat-card-title>
+            <br>
+            <div fxLayout="row wrap" fxLayoutGap="10">
+                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Seleccionar clave CUCOP</mat-label>
+                    <mat-select formControlName="cucopId" onchange="actualizar(this)">
+                        <!-- @for (firma of firmante; track firma.id){
+                            <mat-option [value]="firma.id">{{firma.name + ' ' + firma.firstname+ ' ' + firma.lastname}}</mat-option>
+                        } -->
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput formControlName="cantidad" placeholder="Cantidad" type="number" name="cantidad">
+                </mat-form-field>
+                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Precio</mat-label>
+                    <input matInput formControlName="precio" placeholder="Precio" type="number" name="precio">
+                </mat-form-field>
+                <button mat-mini-fab color="primary" style="margin-right: 5px;" (click)="insert()"><mat-icon>add</mat-icon></button>
+            </div>
+            </form>
+        </div>
+        <div style="width: 100%; height: 60vh !important; overflow: auto;">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="clave">
+                    <th mat-header-cell *matHeaderCellDef>Clave</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cucop">
+                    <th mat-header-cell *matHeaderCellDef>Clave</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+            </table>
+        </div>
+    </mat-card-content>
+   
+</mat-card>
+
+
+
