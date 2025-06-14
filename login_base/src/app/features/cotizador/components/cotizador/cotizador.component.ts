@@ -18,6 +18,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { StorageService } from '../../../../core/services/storage.service';
 
 @Component({
   selector: 'app-cotizador',
@@ -74,10 +75,12 @@ export class CotizadorComponent {
 
   fb = inject( FormBuilder );
   snackBar = inject(MatSnackBar);
+  storageService = inject( StorageService );
 
   dataSource: any;
   cotizacionId: any = null;
-  displayedColumns = ['clave', 'cucop', 'descripcion','unidad','cantidad','preciounitario','total'];
+  clave: any = [];
+  displayedColumns = ['clave', 'cocup', 'descripcion','unidad','cantidad','preciounitario','total'];
 
   cotizacionForm: FormGroup = this.fb.group({
     /* Entidad */
@@ -96,11 +99,17 @@ export class CotizadorComponent {
     medico:['', [Validators.required]],
     hospital:['', [Validators.required]],
     cucopId: [null],
+    descripcion:[''],
+    unidad:[''],
     cantidad:[null],
     precio: [null],
   });
 
-   ngOnInit() {}
+   ngOnInit() {
+    this.getCocup();
+    this.cotizacionForm.controls['descripcion'].disable()
+    this.cotizacionForm.controls['unidad'].disable()
+   }
 
 
   applyFilter() {
@@ -146,9 +155,19 @@ export class CotizadorComponent {
     } else {
       this.snackBar.open("Falta información en el formulario, todos los campos marcados con (*), son obligatorios!", "Aceptar", { duration: 5000 });
     }
+  }
 
-
-
+  getCocup() {
+    // this.employeeService.getFirmante()
+    // .subscribe({
+    //   next: response => {
+    //     this.clave = response.data;
+    //  this.storageService.saveCatalog( response.data, 'clave' );
+    //   },
+    //   error: err => {
+    //     this.snackBar.open(err.message, "Aceptar", { duration: 5000 });
+    //   }
+    // });
   }
 
 }

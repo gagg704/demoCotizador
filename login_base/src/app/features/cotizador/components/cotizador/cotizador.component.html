@@ -109,19 +109,27 @@
             <mat-card-title style="text-align: center;">Se cotiza el siguiente material de insumos:</mat-card-title>
             <br>
             <div fxLayout="row wrap" fxLayoutGap="10">
-                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                <mat-form-field fxFlex="15" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
                     <mat-label>Seleccionar clave CUCOP</mat-label>
                     <mat-select formControlName="cucopId" onchange="actualizar(this)">
-                        <!-- @for (firma of firmante; track firma.id){
-                            <mat-option [value]="firma.id">{{firma.name + ' ' + firma.firstname+ ' ' + firma.lastname}}</mat-option>
-                        } -->
+                        @for (cucop of clave; track cucop.id){
+                            <mat-option [value]="cucop.id">{{cucop.descrpcion}}</mat-option>
+                        }
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                <mat-form-field fxFlex="40" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput formControlName="descripcion" placeholder="Descripción" type="text" name="descripcion">
+                </mat-form-field>
+                  <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                    <mat-label>Unidad</mat-label>
+                    <input matInput formControlName="unidad" placeholder="Unidad" type="text" name="unidad">
+                </mat-form-field>
+                <mat-form-field fxFlex="10" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
                     <mat-label>Cantidad</mat-label>
                     <input matInput formControlName="cantidad" placeholder="Cantidad" type="number" name="cantidad">
                 </mat-form-field>
-                <mat-form-field fxFlex="20" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
+                <mat-form-field fxFlex="10" fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20">
                     <mat-label>Precio</mat-label>
                     <input matInput formControlName="precio" placeholder="Precio" type="number" name="precio">
                 </mat-form-field>
@@ -129,7 +137,7 @@
             </div>
             </form>
         </div>
-        <div style="width: 100%; height: 60vh !important; overflow: auto;">
+        <div style="width: 100%; height: 50vh !important; overflow: auto;">
             <table mat-table [dataSource]="dataSource" matSort>
 
                 <ng-container matColumnDef="clave">
@@ -137,8 +145,33 @@
                     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="cucop">
-                    <th mat-header-cell *matHeaderCellDef>Clave</th>
+                <ng-container matColumnDef="cocup">
+                    <th mat-header-cell *matHeaderCellDef>COCUP</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef>Descripción</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="unidad">
+                    <th mat-header-cell *matHeaderCellDef>Unidad</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="preciounitario">
+                    <th mat-header-cell *matHeaderCellDef>Precio unitario</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <th mat-header-cell *matHeaderCellDef>Total</th>
                     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
 
